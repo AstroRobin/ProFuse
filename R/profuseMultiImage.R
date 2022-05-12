@@ -190,11 +190,13 @@ profuseMultiImageDoFit = function(image_list,
 
   highfit$parm[highfit$parm < lowers] = lowers[highfit$parm < lowers]
   highfit$parm[highfit$parm > uppers] = uppers[highfit$parm > uppers]
-
-  highfit$error = apply(highfit$LD_last$Posterior1,
-                        MARGIN = 2,
-                        FUN = 'sd')
-
+  
+  if (!is.null*(highfit$LD_last$Posterior1)){
+    highfit$error = apply(highfit$LD_last$Posterior1, MARGIN = 2, FUN = 'sd')
+  } else {
+    highfit$error = NULL
+  }
+  
   if(Ncomp == 0.5){
     if(psf_dim[1] %% 2 == 0){psf_dim[1] = psf_dim[1] + 1}
     if(psf_dim[2] %% 2 == 0){psf_dim[2] = psf_dim[2] + 1}
