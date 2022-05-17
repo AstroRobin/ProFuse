@@ -191,7 +191,7 @@ profuseMultiImageDoFit = function(image_list,
   highfit$parm[highfit$parm < lowers] = lowers[highfit$parm < lowers]
   highfit$parm[highfit$parm > uppers] = uppers[highfit$parm > uppers]
   
-  if (!is.null*(highfit$LD_last$Posterior1)){
+  if (!is.null(highfit$LD_last$Posterior1)){
     highfit$error = apply(highfit$LD_last$Posterior1, MARGIN = 2, FUN = 'sd')
   } else {
     highfit$error = NULL
